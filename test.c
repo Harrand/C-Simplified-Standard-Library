@@ -1,14 +1,17 @@
 #include "vector.h"
 #include "algorithm.h"
+#include "fstream.h"
 #include <stdio.h>
 #include <assert.h>
 void unit_test_vector();
 void unit_test_algorithm();
+void unit_test_fstream();
 
 int main()
 {
 	unit_test_vector();
-	unit_test_algorithm();
+	//unit_test_algorithm();
+	unit_test_fstream();
 	return 0;
 }
 
@@ -70,4 +73,22 @@ void unit_test_algorithm()
 	merge_sort(&vec, &compare_int);
 	print_elements(vec);
 	printf("unit test for algorithm complete.\n");
+}
+
+void unit_test_fstream()
+{
+	printf("testing fstream...\n");
+	// open test.c as an example (this file! hello!)
+	ifstream test = open("test.txt");
+	if(!test.good)
+	{
+		perror("Error opening file.");
+		return;
+	}
+	printf("opened.\n");
+	read_all(&test);
+	printf("read.\n");
+	printf("%s\n", test.buffer);
+	close(&test);
+	printf("unit test for fstream complete");
 }

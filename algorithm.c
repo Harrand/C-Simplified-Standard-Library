@@ -11,15 +11,12 @@ void bubble_sort(vector* v, int (*compare_function)(void*, void*))
 		if(compare_function(at(*v, i - 1), at(*v, i)))
 		{// then later > earlier so swap them
 			void* temp = at(*v, i - 1);
-			//printf("swap!");
 			at(*v, i - 1) = at(*v, i);
 			at(*v, i) = temp;
 		}
 	}
 	}
 }
-
-#include <stdio.h>
 
 void merge_sort(vector* v, int (*compare_function)(void*, void*))
 {
@@ -32,9 +29,7 @@ void merge_sort(vector* v, int (*compare_function)(void*, void*))
 	vector b = create_vector();
 	for(size_t i = halfway; i < v->size; i++)
 		push_back(&b, at(*v, i));
-	printf("halved.\n");
 	vector sorted = merge_sort_impl(a, b, compare_function);
-	printf("merge sorted.\n");
 	destroy_vector(&a);
 	destroy_vector(&b);
 	clear(v);

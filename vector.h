@@ -17,10 +17,11 @@ void destroy_vector(vector* v); // O(N)
 void push_back(vector* v, void* entry); // O(N)
 //C++ std::vector::push_back(...) is amortized constant as it pre-allocates. this is a simple implementation so remains linear until pre-allocation is implemented here.
 // at needs to be a macro because otherwise we copy a pointer and try to assign to an rvalue
+// O(1)
 #define at(v, i) ((v).data[(i)])
 void* pop_back(vector* v); // O(N) (i think)
 void resize(vector* v, size_t new_size, void* default_value); // O(N)
-void clear(vector* v);
+void clear(vector* v); // O(N)
 void print_elements(vector v); // O(N)
 
 #endif
