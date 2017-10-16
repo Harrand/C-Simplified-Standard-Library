@@ -78,17 +78,12 @@ void unit_test_algorithm()
 void unit_test_fstream()
 {
 	printf("testing fstream...\n");
-	// open test.c as an example (this file! hello!)
 	ifstream test = open("test.txt");
-	if(!test.good)
-	{
-		perror("Error opening file.");
-		return;
-	}
-	printf("opened.\n");
+	assert(test.good);
 	read_all(&test);
-	printf("read.\n");
 	printf("%s\n", test.buffer);
 	close(&test);
+	ofstream test_edit = edit_file("test.txt");
+	write(&test_edit, "i added some more data to this file!\n");
 	printf("unit test for fstream complete");
 }
