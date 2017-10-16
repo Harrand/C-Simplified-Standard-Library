@@ -34,6 +34,8 @@ void unit_test_vector()
 	int zero = 0;
 	resize(&v, 100, &zero);
 	assert(v.size == 100);
+	clear(&v);
+	assert(v.size == 0);
 	destroy_vector(&v);
 	printf("unit test for vector complete.\n");
 }
@@ -47,8 +49,10 @@ int compare_int(void* left, void* right)
 
 void unit_test_algorithm()
 {
+	printf("testing algorithm...\n");
 	// unsorted = 1, 5, 9, 78, 0, 2, 10
 	// sorted = 0, 1, 2, 5, 9, 10, 78
+	printf("testing bubble-sort...\n");
 	vector v = create_vector();
 	int unsorted[7] = {1, 5, 9, 78, 0, 2, 10};
 	int sorted[7] = {0, 1, 2, 5, 9, 10, 78};
@@ -58,4 +62,12 @@ void unit_test_algorithm()
 	for(size_t i = 0; i < 7; i++)
 		assert(*(int*)at(v, i) == sorted[i]);
 	destroy_vector(&v);
+	
+	printf("testing merge-sort...\n");
+	vector vec = create_vector();
+	for(size_t i = 0; i < 7; i++)
+		push_back(&vec, &unsorted[i]);
+	merge_sort(&vec, &compare_int);
+	print_elements(vec);
+	printf("unit test for algorithm complete.\n");
 }

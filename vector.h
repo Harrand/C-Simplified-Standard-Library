@@ -20,6 +20,7 @@ void push_back(vector* v, void* entry); // O(N)
 #define at(v, i) ((v).data[(i)])
 void* pop_back(vector* v); // O(N) (i think)
 void resize(vector* v, size_t new_size, void* default_value); // O(N)
+void clear(vector* v);
 void print_elements(vector v); // O(N)
 
 #endif

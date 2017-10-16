@@ -42,6 +42,12 @@ void resize(vector* v, size_t new_size, void* default_value)
 		push_back(v, default_value);
 }
 
+void clear(vector* v)
+{
+	while(v->size > 0)
+		free(pop_back(v));
+}
+
 void print_elements(vector v)
 {
 	if(v.size < 1)

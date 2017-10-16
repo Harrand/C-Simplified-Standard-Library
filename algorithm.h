@@ -6,5 +6,6 @@
 */
 void bubble_sort(vector* v, int (*compare_function)(void*, void*));
 void merge_sort(vector* v, int (*compare_function)(void*, void*));
+vector merge_sort_impl(vector a, vector b, int (*compare_function)(void*, void*));
 
 #endif
