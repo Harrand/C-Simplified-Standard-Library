@@ -26,15 +26,17 @@ void push_back(vector* v, void* entry)
 	v->data[v->size-1] = copy(entry);
 }
 
-void pop_back(vector* v)
-{
-	free(v->data[v->size-1]);
-	v->data = (void**)realloc(v->data, --(v->size) * sizeof(void*));
-}
-
 void* at(vector v, size_t index)
 {
 	return v.data[index];
+}
+
+void* pop_back(vector* v)
+{
+	void* cpy = copy(v->data[v->size-1]);
+	free(v->data[v->size-1]);
+	v->data = (void**)realloc(v->data, --(v->size) * sizeof(void*));
+	return cpy;
 }
 
 void print_elements(vector v)
